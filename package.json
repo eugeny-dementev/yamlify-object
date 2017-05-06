@@ -1,7 +1,7 @@
 {
   "name": "yamlify-object",
   "version": "0.0.1",
-  "description": "Stringify object with yaml syntax",
+  "description": "Stringify object/array with yaml syntax",
   "main": "./index.js",
   "devDependencies": {
     "codecov.io": "^0.1.6",
