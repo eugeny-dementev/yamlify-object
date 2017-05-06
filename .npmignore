@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+.gitignore
+.npmignore
+.travis.yml
+test/
+*.log
+coverage.html
+log.png
+.eslintrc.js
+.idea
+coverage.json

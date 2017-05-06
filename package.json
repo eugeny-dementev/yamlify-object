@@ -1,0 +1,42 @@
+{
+  "name": "yamlify-object",
+  "version": "0.0.1",
+  "description": "Stringify object with yaml syntax",
+  "main": "./index.js",
+  "devDependencies": {
+    "cli-color": "^1.2.0",
+    "codecov.io": "^0.1.6",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "lab": "^13.0.2"
+  },
+  "scripts": {
+    "eslint": "eslint ./src",
+    "eslint-fix": "eslint ./src --fix",
+    "test": "lab test/**/*.js",
+    "codecov": "lab -r lcov | codecov",
+    "test-cov-html": "lab -r html -o coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eugeny-dementev/yamlify-object.git"
+  },
+  "keywords": [
+    "formatter",
+    "console",
+    "log",
+    "yaml",
+    "beauty",
+    "yamlify"
+  ],
+  "author": {
+    "name": "Eugeny Dementev",
+    "url": "http://github.com/eugeny-dementev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eugeny-dementev/yamlify-object/issues"
+  },
+  "homepage": "https://github.com/eugeny-dementev/yamlify-object"
+}
