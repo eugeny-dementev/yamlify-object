@@ -4,7 +4,6 @@
   "description": "Stringify object with yaml syntax",
   "main": "./index.js",
   "devDependencies": {
-    "cli-color": "^1.2.0",
     "codecov.io": "^0.1.6",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
