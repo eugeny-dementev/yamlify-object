@@ -11,7 +11,7 @@ const configureYamlifyObject = require('../../src/yamlifyObject');
 
 const defaultConfig = {
   prefix: true,
-  postfix: true,
+  postfix: false,
   colors: defaultColors,
   dateToString: defaultDateToString,
   indent: ' ',

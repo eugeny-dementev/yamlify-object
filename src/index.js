@@ -6,7 +6,7 @@ const defaultColors = require('./colors');
 module.exports = function prepareOptions (options) {
   const {
     prefix = true,
-    postfix = true,
+    postfix = false,
     dateToString = defaultDateToString,
     colors = {},
     indent = '  ',

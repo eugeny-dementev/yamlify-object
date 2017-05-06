@@ -100,21 +100,21 @@ module.exports = function configureYamlifyObject ({
    * @params {object} obj
    */
   return function yamlifyObject (obj) {
+    let string = '';
+
     if (
       typeOf(obj) === 'object'
       && Object.keys(obj).length > 0
     ) {
-      return objectProperty(obj);
-    }
-
-    if (
+      string = objectProperty(obj);
+    } else if (
       typeOf(obj) === 'array'
       && obj.length > 0
     ) {
-      return arrayProperty(obj);
+      string = arrayProperty(obj);
     }
 
-    return '';
+    return string + (postfix ? '\n' : '');
   };
 };
 
