@@ -8,5 +8,6 @@ install:
   - npm install
 
 script:
+  - npm run eslint
   - npm test
   - npm run codecov
