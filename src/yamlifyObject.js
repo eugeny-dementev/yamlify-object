@@ -22,22 +22,26 @@ module.exports = function configureYamlifyObject ({
    */
   function objectProperty (obj, indentLength = 1, inArray = false) {
     if (Object.keys(obj).length === 0) {
-      return (indentLength === 1
-        ? (inArray ? '{}' : '')
-        : ' {}');
+      if (indentLength === 1) {
+        return inArray ? '{}' : '';
+      }
+
+      return ' {}';
     }
 
     let str = '\n';
-    const prefix = getPrefix(indentLength, indentChars);
+    const objectPrefix = getPrefix(indentLength, indentChars);
 
-    Object.keys(obj).forEach((name, index) => {
-      const value = obj[name];
-      const type = typeOf(value);
-      const inArrayPrefix = index !== 0 && inArray ? '  ' : '';
-      const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : ' ';
+    Object
+      .keys(obj)
+      .forEach((name, index) => {
+        const value = obj[name];
+        const type = typeOf(value);
+        const inArrayPrefix = index !== 0 && inArray ? '  ' : '';
+        const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : ' ';
 
-      str += `${inArrayPrefix}${prefix}${name}:${afterPropsIndent}${typifiedString(type, value, indentLength + 1)}\n`;
-    });
+        str += `${inArrayPrefix}${objectPrefix}${name}:${afterPropsIndent}${typifiedString(type, value, indentLength + 1)}\n`;
+      });
 
     return str.substring(0, str.length - 1);
   }
@@ -51,22 +55,25 @@ module.exports = function configureYamlifyObject ({
    */
   function arrayProperty (values, indentLength = 1, inArray = false) {
     if (values.length <= 0) {
-      return (indentLength === 1
-        ? (inArray ? '[]' : '')
-        : ' []');
+      if (indentLength === 1) {
+        return inArray ? '[]' : '';
+      }
+
+      return ' []';
     }
 
     let str = '\n';
-    const prefix = getPrefix(indentLength, indentChars);
+    const arrayPrefix = getPrefix(indentLength, indentChars);
 
-    values.forEach((value) => {
-      const type = typeOf(value);
-      const valueString = typifiedString(type, value, indentLength, true)
-        .toString()
-        .trim();
+    values
+      .forEach((value) => {
+        const type = typeOf(value);
+        const valueString = typifiedString(type, value, indentLength, true)
+          .toString()
+          .trim();
 
-      str += `${prefix}- ${valueString}\n`;
-    });
+        str += `${arrayPrefix}- ${valueString}\n`;
+      });
 
     return str.substring(0, str.length - 1);
   }
@@ -114,10 +121,6 @@ module.exports = function configureYamlifyObject ({
       string = arrayProperty(obj);
     }
 
-    return string + (postfix ? '\n' : '');
+    return string.slice(prefix ? 0 : 1) + (postfix ? '\n' : '');
   };
 };
-
-function trim () {
-  return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
-}

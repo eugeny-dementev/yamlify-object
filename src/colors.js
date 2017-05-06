@@ -9,7 +9,7 @@ module.exports = {
   boolean: noColor,
   null: noColor,
   undefined: noColor,
-}
+};
 
 /**
  * @params {string}
