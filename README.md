@@ -3,22 +3,12 @@
 [![Build Status][travis-img]][travis-url]
 [![Code Coverage][codecov-img]][codecov-url]
 
-Default winston log levels with message:
-
-![Levels color](/winston.png?raw=true "Types example")
-
-It's look's like yaml \o/
-
-![Meta object example](/log.png?raw=true "Types example")
-
-This is custom config for default winston console transform.
-
 ```
   npm install yamlify-object
 ```
 
 ``` js
-  var toYAML = require('yamlify-object');
+  const yamlifyObject = require('yamlify-object');
   
   const obj = {
     array: [
@@ -36,7 +26,7 @@ This is custom config for default winston console transform.
     },
   };
 
-  console.log(toYAML(obj));
+  console.log(yamlifyObject(obj));
 ```
 
 [travis-img]: https://travis-ci.org/eugeny-dementev/yamlify-object.svg?branch=master
