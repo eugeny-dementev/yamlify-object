@@ -13,8 +13,6 @@ module.exports = function configureYamlifyObject ({
   dateToString,
   indent: indentChars,
 }) {
-
-  console.log('dateToString FUNCTION', dateToString);
   /**
    * Object to yaml string formatter
    *
@@ -24,7 +22,9 @@ module.exports = function configureYamlifyObject ({
    */
   function objectProperty (obj, indentLength = 1, inArray = false) {
     if (Object.keys(obj).length === 0) {
-      return indentLength === 1 ? '' : ' {}';
+      return (indentLength === 1
+        ? (inArray ? '{}' : '')
+        : ' {}');
     }
 
     let str = '\n';
@@ -49,9 +49,11 @@ module.exports = function configureYamlifyObject ({
    * @param {number} [indentLength=1]
    * @return {string}
    */
-  function arrayProperty (values, indentLength = 1) {
+  function arrayProperty (values, indentLength = 1, inArray = false) {
     if (values.length <= 0) {
-      return indentLength === 1 ? '' : ' []';
+      return (indentLength === 1
+        ? (inArray ? '[]' : '')
+        : ' []');
     }
 
     let str = '\n';

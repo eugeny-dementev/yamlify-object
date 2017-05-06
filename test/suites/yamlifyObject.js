@@ -18,6 +18,7 @@ const defaultConfig = {
 };
 
 const objectTestCases = require('../cases/object');
+const arrayTestCases = require('../cases/array');
 
 experiment('yamlifyObject', () => {
   experiment('defaultConfig', () => {
@@ -36,30 +37,14 @@ experiment('yamlifyObject', () => {
     });
 
     experiment('array', () => {
-      test('empty array', (done) => {
-        const str = yamlifyObject([]);
+      arrayTestCases.forEach((testCase) => {
+        test(testCase.name, (done) => {
+          const output = yamlifyObject(testCase.input);
 
-        assert.equal(str, '');
+          assert.equal(output, testCase.output);
 
-        done();
-      });
-
-      test('object with emptyArray prop', (done) => {
-        const str = yamlifyObject({
-          emptyArray: []
+          done()
         });
-
-        assert.equal(str, '\n emptyArray: []');
-
-        done();
-      });
-
-      test('with elems string start with \\n', (done) => {
-        const str = yamlifyObject([1]);
-
-        assert.equal(str, '\n - 1');
-
-        done();
       });
     });
   });
