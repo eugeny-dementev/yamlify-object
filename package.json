@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Stringify object/array with yaml syntax",
   "main": "./index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "devDependencies": {
     "codecov.io": "^0.1.6",
     "eslint": "^3.19.0",
