@@ -15,7 +15,7 @@ module.exports = function getConfig (config = {}) {
     dateToString: config.dateToString || defaultDateToString,
     colors: Object.assign({}, defaultColors, config.colors),
   };
-}
+};
 
 function simpleChoice (userValue, defaultValue) {
   if (typeof userValue === 'undefined') {
