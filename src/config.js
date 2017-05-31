@@ -2,9 +2,9 @@ const defaultDateToString = require('./dateToString');
 const defaultColors = require('./colors');
 
 const defaultConfig = {
-  indent: '  ',
+  indent: ' ',
   prefix: '\n',
-  postfix: '\n',
+  postfix: '',
 };
 
 module.exports = function getConfig (config = {}) {

@@ -9,9 +9,9 @@ const dateToString = require('../../src/dateToString');
 const colors = require('../../src/colors');
 
 const defaultConfig = {
-  indent: '  ',
+  indent: ' ',
   prefix: '\n',
-  postfix: '\n',
+  postfix: '',
   dateToString,
   colors,
 };

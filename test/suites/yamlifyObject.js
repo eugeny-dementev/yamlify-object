@@ -9,14 +9,6 @@ const defaultDateToString = require('../../src/dateToString');
 
 const yamlifyObject = require('../../src/index');
 
-const defaultConfig = {
-  prefix: '\n',
-  postfix: '',
-  colors: defaultColors,
-  dateToString: defaultDateToString,
-  indent: ' ',
-};
-
 const objectTestCases = require('../cases/object');
 const arrayTestCases = require('../cases/array');
 
@@ -25,7 +17,7 @@ experiment('yamlifyObject', () => {
     experiment('object', () => {
       objectTestCases.forEach((testCase) => {
         test(testCase.name, (done) => {
-          const output = yamlifyObject(testCase.input, defaultConfig);
+          const output = yamlifyObject(testCase.input);
 
           assert.equal(output, testCase.output);
 
@@ -37,7 +29,7 @@ experiment('yamlifyObject', () => {
     experiment('array', () => {
       arrayTestCases.forEach((testCase) => {
         test(testCase.name, (done) => {
-          const output = yamlifyObject(testCase.input, defaultConfig);
+          const output = yamlifyObject(testCase.input);
 
           assert.equal(output, testCase.output);
 
