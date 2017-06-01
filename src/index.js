@@ -13,6 +13,7 @@ module.exports = function configureYamlifyObject (target, config) {
     prefix,
     postfix,
     dateToString,
+    errorToString,
     indent: indentChars,
   } = getConfig(config);
 
@@ -101,7 +102,12 @@ module.exports = function configureYamlifyObject (target, config) {
         return colors.undefined('undefined');
       case 'date':
         return colors.date(dateToString(value));
+      case 'error':
+        return colors.error(errorToString(value));
       default:
+        if (value && value.toString) {
+          return value.toString();
+        }
         return Object.prototype.toString.call(value);
     }
   }
@@ -120,5 +126,15 @@ module.exports = function configureYamlifyObject (target, config) {
     string = arrayProperty(target);
   }
 
-  return string.slice(prefix ? 0 : 1) + (postfix ? '\n' : '');
+  if (string.length === 0) {
+    return '';
+  }
+
+  return `${
+    prefix
+  }${
+    string.slice(1)
+  }${
+    postfix
+  }`;
 };

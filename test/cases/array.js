@@ -1,3 +1,4 @@
+const ERROR = new Error('hello world');
 const SYMBOL = Symbol('HELLO WORLD');
 const DATE = new Date(0);
 
@@ -36,6 +37,11 @@ module.exports = [
     name: 'array with Date instance',
     input: [DATE],
     output: `\n - new Date(${DATE.toISOString()})`
+  },
+  {
+    name: 'property with Error instance',
+    input: [ERROR],
+    output: `\n - Error: hello world`,
   },
   {
     name: 'array with true boolean',

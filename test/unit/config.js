@@ -6,6 +6,7 @@ const assert = require('assert');
 
 const buildConfig = require('../../src/config');
 const dateToString = require('../../src/dateToString');
+const errorToString = require('../../src/errorToString');
 const colors = require('../../src/colors');
 
 const defaultConfig = {
@@ -13,6 +14,7 @@ const defaultConfig = {
   prefix: '\n',
   postfix: '',
   dateToString,
+  errorToString,
   colors,
 };
 
@@ -28,15 +30,16 @@ experiment('config', () => {
     done();
   });
 
-  ['indent', 'postfix', 'prefix'].forEach((field) => {
-    test(`should set ${field} to config as is`, (done) => {
-      const config = buildConfig({ [field]: mockString });
+  ['indent', 'postfix', 'prefix']
+    .forEach((field) => {
+      test(`should set ${field} to config as is`, (done) => {
+        const config = buildConfig({ [field]: mockString });
 
-      assert.equal(config[field], mockString);
+        assert.equal(config[field], mockString);
 
-      done();
+        done();
+      });
     });
-  });
 
   Object
     .keys(colors)

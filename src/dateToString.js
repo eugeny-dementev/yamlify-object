@@ -1,5 +1,6 @@
 /**
  * @params {Date} date
+ * @returns {string}
  */
 module.exports = function defaultDateToString (date) {
   return `new Date(${

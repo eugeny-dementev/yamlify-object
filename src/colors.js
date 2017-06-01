@@ -3,6 +3,7 @@
  */
 module.exports = {
   date: noColor,
+  error: noColor,
   symbol: noColor,
   string: noColor,
   number: noColor,

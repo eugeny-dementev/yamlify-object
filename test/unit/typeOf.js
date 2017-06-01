@@ -61,6 +61,12 @@ experiment('typeOf', () => {
     done();
   });
 
+  test('typeOf new Error', (done) => {
+    assert.equal(typeOf(new Error()), 'error');
+
+    done();
+  });
+
   test('typeOf new Object', (done) => {
     assert.equal(typeOf(new Object), 'object');
 

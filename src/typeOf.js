@@ -7,8 +7,19 @@ module.exports = function typeOf (value) {
     return 'date';
   }
 
-  if (!value && typeof value === 'object') {
+  if (value instanceof Error) {
+    return 'error';
+  }
+
+  if (value === null) {
     return 'null';
+  }
+
+  if (
+    typeof value === 'object'
+    && Object.prototype.toString.call(value) === '[object Object]'
+  ) {
+    return 'object';
   }
 
   return typeof value;
