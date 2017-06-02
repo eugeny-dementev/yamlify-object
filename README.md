@@ -140,6 +140,10 @@ console.log(formattedString);
 */
 ```
 
+For terminal can be used [yamlify-object-colors](https://github.com/eugeny-dementev/yamlify-object-colors) preset: 
+
+![Object formating example](https://raw.githubusercontent.com/eugeny-dementev/yamlify-object-colors/master/terminal.png "Object formating example")
+
 [travis-img]: https://travis-ci.org/eugeny-dementev/yamlify-object.svg?branch=master
 [travis-url]: https://travis-ci.org/eugeny-dementev/yamlify-object
 
