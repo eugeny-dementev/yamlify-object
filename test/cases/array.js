@@ -14,9 +14,19 @@ module.exports = [
     output: '\n - {}'
   },
   {
+    name: 'array with few empty objects',
+    input: [{}, {}],
+    output: '\n - {}\n - {}'
+  },
+  {
     name: 'array with empty array',
     input: [[]],
     output: '\n - []'
+  },
+  {
+    name: 'array with few empty arrays',
+    input: [[], []],
+    output: '\n - []\n - []'
   },
   {
     name: 'array with number',

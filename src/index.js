@@ -26,12 +26,8 @@ module.exports = function configureYamlifyObject (target, config) {
    */
   function objectProperty (obj, indentLength = 1, inArray = 0) {
     if (Object.keys(obj).length === 0) {
-      if (indentLength === 1) {
-        if (inArray) {
-          return '{}';
-        }
-
-        return '';
+      if (indentLength >= 1 && inArray) {
+        return '{}';
       }
 
       return ' {}';
@@ -73,13 +69,9 @@ module.exports = function configureYamlifyObject (target, config) {
    * @return {string}
    */
   function arrayProperty (values, indentLength = 1, inArray = 0) {
-    if (values.length <= 0) {
-      if (indentLength === 1) {
-        if (inArray) {
-          return '[]';
-        }
-
-        return '';
+    if (values.length === 0) {
+      if (indentLength >= 1 && inArray) {
+        return '[]';
       }
 
       return ' []';
