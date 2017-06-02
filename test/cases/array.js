@@ -78,4 +78,19 @@ module.exports = [
     input: [{ prop1: 'value', prop2: 'value' }],
     output: '\n - prop1: value\n   prop2: value',
   },
+  {
+    name: 'array with object with object property',
+    input: [{ object: { prop: 'value' } }],
+    output: '\n - object:\n    prop: value',
+  },
+  {
+    name: 'array with object with object property with array with value',
+    input: [{ o: { p: ['value'] } }],
+    output: '\n - o:\n    p:\n     - value',
+  },
+  {
+    name: 'array with object with array with object with object property',
+    input: [{ o: { p: [{ o: { p: 'value' } }] } }],
+    output: '\n - o:\n    p:\n     - o:\n        p: value',
+  },
 ];

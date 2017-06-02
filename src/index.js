@@ -24,10 +24,14 @@ module.exports = function configureYamlifyObject (target, config) {
    * @param {number} [indentLength=1]
    * @returns {string}
    */
-  function objectProperty (obj, indentLength = 1, inArray = false) {
+  function objectProperty (obj, indentLength = 1, inArray = 0) {
     if (Object.keys(obj).length === 0) {
       if (indentLength === 1) {
-        return inArray ? '{}' : '';
+        if (inArray) {
+          return '{}';
+        }
+
+        return '';
       }
 
       return ' {}';
@@ -38,13 +42,24 @@ module.exports = function configureYamlifyObject (target, config) {
 
     Object
       .keys(obj)
-      .forEach((name, index) => {
+      .forEach((name) => {
         const value = obj[name];
         const type = typeOf(value);
-        const inArrayPrefix = index !== 0 && inArray ? '  ' : '';
+        const inArrayPrefix = getPrefix(inArray, '  ');
         const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : ' ';
+        const valueString = typifiedString(type, value, indentLength + 1, inArray);
 
-        str += `${inArrayPrefix}${objectPrefix}${name}:${afterPropsIndent}${typifiedString(type, value, indentLength + 1)}\n`;
+        str += `${
+          inArrayPrefix
+        }${
+          objectPrefix
+        }${
+          name
+        }:${
+          afterPropsIndent
+        }${
+          valueString
+        }\n`;
       });
 
     return str.substring(0, str.length - 1);
@@ -57,10 +72,14 @@ module.exports = function configureYamlifyObject (target, config) {
    * @param {number} [indentLength=1]
    * @return {string}
    */
-  function arrayProperty (values, indentLength = 1, inArray = false) {
+  function arrayProperty (values, indentLength = 1, inArray = 0) {
     if (values.length <= 0) {
       if (indentLength === 1) {
-        return inArray ? '[]' : '';
+        if (inArray) {
+          return '[]';
+        }
+
+        return '';
       }
 
       return ' []';
@@ -72,11 +91,18 @@ module.exports = function configureYamlifyObject (target, config) {
     values
       .forEach((value) => {
         const type = typeOf(value);
-        const valueString = typifiedString(type, value, indentLength, true)
+        const inArrayPrefix = getPrefix(inArray, '  ');
+        const valueString = typifiedString(type, value, indentLength, inArray + 1)
           .toString()
-          .trim();
+          .trimLeft();
 
-        str += `${arrayPrefix}- ${valueString}\n`;
+        str += `${
+          inArrayPrefix
+        }${
+          arrayPrefix
+        }- ${
+          valueString
+        }\n`;
       });
 
     return str.substring(0, str.length - 1);
