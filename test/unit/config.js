@@ -58,5 +58,18 @@ experiment('config', () => {
         done();
       });
     });
+
+  ['dateToString', 'errorToString']
+    .forEach((option) => {
+      test(`should return user ${option} if it passed`, (done) => {
+        const config = buildConfig({
+          [option]: mockFunction,
+        });
+
+        assert.strictEqual(config[option], mockFunction);
+
+        done();
+      });
+    });
 });
 
