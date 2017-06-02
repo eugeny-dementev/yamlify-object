@@ -87,13 +87,13 @@ Default: `''`
 
 Type: `Function`
 
-Expected to return a `string` that stringified versin of Date instance.
+Expected to return a `string` that stringified version of Date instance.
 
 ##### errorToString(error: Error)
 
 Type: `Function`
 
-Expected to return a `string` that stringified versin of Error instance.
+Expected to return a `string` that stringified version of Error instance.
 
 ##### colors
 
@@ -116,7 +116,7 @@ Each property of colors object expected to be a `function` that
 expected to return somehow colorified version of passed `string` argument.
 
 You can specify colors only for types you need and the rest
-will stayed the same colorless strings:
+will stay colorless strings:
 
 ``` js
 const obj = {
