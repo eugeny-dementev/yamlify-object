@@ -35,6 +35,7 @@
     "log",
     "yaml",
     "beauty",
+    "stringify",
     "yamlify"
   ],
   "author": {
