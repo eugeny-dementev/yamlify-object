@@ -75,12 +75,12 @@ Default: `' '` - signle space
 
 ##### prefix
 
-Type: `string`
+Type: `string`<br>
 Default: `'\n'`
 
 ##### postfix
 
-Type: `string`
+Type: `string`<br>
 Default: `''`
 
 ##### dateToString(date: Date)
@@ -97,7 +97,7 @@ Expected to return a `string` that stringified version of Error instance.
 
 ##### colors
 
-Type: `object`
+Type: `object`<br>
 Default:
 ``` ts
 {
