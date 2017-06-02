@@ -2,11 +2,15 @@
   "name": "yamlify-object",
   "version": "0.2.3",
   "description": "Stringify object/array with yaml syntax",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=4.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-lab": "^2.0.0",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-preset-env": "^1.5.1",
     "codecov.io": "^0.1.6",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
@@ -14,11 +18,12 @@
     "lab": "^13.0.2"
   },
   "scripts": {
+    "build": "babel src -d dist",
+    "prepublish": "npm run build",
     "eslint": "eslint ./src",
     "eslint-fix": "eslint ./src --fix",
-    "test": "lab test/**/*.js",
-    "codecov": "lab -r lcov | codecov",
-    "test-cov-html": "lab -r html -o coverage.html"
+    "test": "lab -T node_modules/babel-lab test/**/*.js -l",
+    "codecov": "lab -T node_modules/babel-lab -r lcov | codecov"
   },
   "repository": {
     "type": "git",
