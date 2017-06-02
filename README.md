@@ -60,7 +60,7 @@ console.log(formattedString);
 ```
 ## API
 
-### stringifyObject(input, [options])
+### yamlifyObject(input, [options])
 
 #### input
 
