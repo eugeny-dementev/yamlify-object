@@ -3,6 +3,7 @@
 [![Build Status][travis-img]][travis-url]
 [![Code Coverage][codecov-img]][codecov-url]
 
+Stringify object/array with yaml syntax
 
 ## Install
 
