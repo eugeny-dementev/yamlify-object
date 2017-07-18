@@ -29,6 +29,11 @@ module.exports = [
     output: '\n - []\n - []'
   },
   {
+    name: 'array with object with empty property object',
+    input: [{ empty: {} }],
+    output: '\n - empty: {}'
+  },
+  {
     name: 'array with number',
     input: [638],
     output: '\n - 638'
