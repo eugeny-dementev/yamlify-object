@@ -4,6 +4,11 @@ const DATE = new Date(0)
 
 module.exports = [
   {
+    name: 'null',
+    input: null,
+    output: '',
+  },
+  {
     name: 'empty object',
     input: {},
     output: '',
