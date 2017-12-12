@@ -72,7 +72,7 @@ Type: `Object` `Array`
 ##### indent
 
 Type: `string`<br>
-Default: `' '` - signle space
+Default: `' '` - single space
 
 ##### prefix
 
