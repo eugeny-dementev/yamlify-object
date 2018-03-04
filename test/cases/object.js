@@ -94,3 +94,12 @@ module.exports = [
     output: '\n array:\n  - prop1: value\n    prop2: value',
   },
 ];
+
+const circularObject = {};
+circularObject.circular = circularObject;
+
+module.exports.push({
+  name: 'object with circular reference',
+  input: circularObject,
+  output: '\n circular: [Circular]',
+});
