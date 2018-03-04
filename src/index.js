@@ -7,7 +7,7 @@ const getPrefix = require('./getPrefix');
  */
 const NO_INDENT_TYPES = ['object', 'array'];
 
-module.exports = function configureYamlifyObject (target, config) {
+module.exports = function yamlifyObject (target, config) {
   const {
     colors,
     prefix,
@@ -16,6 +16,8 @@ module.exports = function configureYamlifyObject (target, config) {
     errorToString,
     indent: indentChars,
   } = getConfig(config);
+
+  const seen = new Map();
 
   /**
    * Object to yaml string formatter
@@ -39,7 +41,7 @@ module.exports = function configureYamlifyObject (target, config) {
         const type = typeOf(value);
         const inArrayPrefix = getPrefix(inArray, '  ');
         const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : ' ';
-        const valueString = typifiedString(type, value, indentLength + 1, inArray);
+        const valueString = checkCircular(value) ? ' [Circular]' : typifiedString(type, value, indentLength + 1, inArray);
 
         str += `${
           inArrayPrefix
@@ -76,7 +78,7 @@ module.exports = function configureYamlifyObject (target, config) {
       .forEach((value) => {
         const type = typeOf(value);
         const inArrayPrefix = getPrefix(inArray, '  ');
-        const valueString = typifiedString(type, value, indentLength, inArray + 1)
+        const valueString = checkCircular(value) ? '[Circular]' : typifiedString(type, value, indentLength, inArray + 1)
           .toString()
           .trimLeft();
 
@@ -122,7 +124,23 @@ module.exports = function configureYamlifyObject (target, config) {
     }
   }
 
+  function checkCircular (value) {
+    if (!['object', 'array'].includes(typeOf(value))) {
+      return false;
+    }
+
+    if (seen.has(value)) {
+      return true;
+    }
+
+    seen.set(value);
+
+    return false;
+  }
+
   let string = '';
+
+  seen.set(target);
 
   if (
     typeOf(target) === 'object'

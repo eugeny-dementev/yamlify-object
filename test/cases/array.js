@@ -114,3 +114,12 @@ module.exports = [
     output: '\n - o:\n    p:\n     - o:\n        p: value',
   },
 ];
+
+const circularArray = [];
+circularArray.push(circularArray);
+
+module.exports.push({
+  name: 'array with circular reference',
+  input: circularArray,
+  output: '\n - [Circular]',
+});
