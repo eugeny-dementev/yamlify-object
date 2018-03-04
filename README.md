@@ -35,6 +35,8 @@ const obj = {
   },
 };
 
+obj.circular = obj;
+
 const formattedString = yamlifyObject(obj, {
   indent: '  ',
   prefix: '\n',
@@ -56,6 +58,7 @@ console.log(formattedString);
     null: null
     undefined: undefined
     emptyObject: {}
+  circular: [Circular]
 
 */
 ```
