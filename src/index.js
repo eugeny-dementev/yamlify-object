@@ -28,7 +28,7 @@ module.exports = function yamlifyObject (target, config) {
    */
   function objectProperty (obj, indentLength = 1, inArray = 0) {
     if (Object.keys(obj).length === 0) {
-      return ' {}';
+      return colors.base(' {}');
     }
 
     let str = '\n';
@@ -39,17 +39,19 @@ module.exports = function yamlifyObject (target, config) {
       .forEach((name) => {
         const value = obj[name];
         const type = typeOf(value);
-        const inArrayPrefix = getPrefix(inArray, '  ');
-        const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : ' ';
-        const valueString = checkCircular(value) ? ' [Circular]' : typifiedString(type, value, indentLength + 1, inArray);
+        const inArrayPrefix = getPrefix(inArray, colors.base('  '));
+        const afterPropsIndent = NO_INDENT_TYPES.includes(type) ? '' : colors.base(' ');
+        const valueString = checkCircular(value) ? colors.base(' [Circular]') : typifiedString(type, value, indentLength + 1, inArray);
 
         str += `${
           inArrayPrefix
         }${
           objectPrefix
         }${
-          name
-        }:${
+          colors.base(name)
+        }${
+          colors.base(':')
+        }${
           afterPropsIndent
         }${
           valueString
@@ -68,7 +70,7 @@ module.exports = function yamlifyObject (target, config) {
    */
   function arrayProperty (values, indentLength = 1, inArray = 0) {
     if (values.length === 0) {
-      return ' []';
+      return colors.base(' []');
     }
 
     let str = '\n';
@@ -77,8 +79,8 @@ module.exports = function yamlifyObject (target, config) {
     values
       .forEach((value) => {
         const type = typeOf(value);
-        const inArrayPrefix = getPrefix(inArray, '  ');
-        const valueString = checkCircular(value) ? '[Circular]' : typifiedString(type, value, indentLength, inArray + 1)
+        const inArrayPrefix = getPrefix(inArray, colors.base('  '));
+        const valueString = checkCircular(value) ? colors.base('[Circular]') : typifiedString(type, value, indentLength, inArray + 1)
           .toString()
           .trimLeft();
 
@@ -86,7 +88,9 @@ module.exports = function yamlifyObject (target, config) {
           inArrayPrefix
         }${
           arrayPrefix
-        }- ${
+        }${
+          colors.base('- ')
+        }${
           valueString
         }\n`;
       });
