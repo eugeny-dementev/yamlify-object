@@ -2,6 +2,7 @@
  * Default colors for all supported value types
  */
 module.exports = {
+  base: noColor,
   date: noColor,
   error: noColor,
   symbol: noColor,
