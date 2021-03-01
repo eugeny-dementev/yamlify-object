@@ -119,7 +119,7 @@ module.exports = function yamlifyObject (target, config) {
       case 'date':
         return colors.date(dateToString(value));
       case 'error':
-        return colors.error(errorToString(value));
+        return colors.error(errorToString(value, getPrefix(indentLength, indentChars)));
       default:
         if (value && value.toString) {
           return value.toString();
