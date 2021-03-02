@@ -119,8 +119,8 @@ Default:
 Each property of colors object expected to be a `function` that
 expected to return somehow colorified version of passed `string` argument.
 
-You can specify colors only for types you need and the rest
-will stay colorless strings:
+You can specify colors only for types you need and, if have the need, the base text color.
+The rest will stay colorless strings:
 
 ``` js
 const obj = {
@@ -131,6 +131,7 @@ const obj = {
 
 const formattedString = yamlifyObject(obj, {
   colors: {
+    base: (text) => `COLOR_CODE${text}COLOR_CODE`,
     number: (value) => `COLOR_CODE${value}COLOR_CODE`,
     boolean: (value) => `COLOR_CODE${value}COLOR_CODE`,
   },
@@ -143,6 +144,9 @@ console.log(formattedString);
  bool: COLOR_CODEtrueCOLOR_CODE
 */
 ```
+
+`base` color is the text that is not related to the values (names of the properties, dashes, brackets, etc)
+
 
 For terminal can be used [yamlify-object-colors](https://github.com/eugeny-dementev/yamlify-object-colors) preset: 
 
