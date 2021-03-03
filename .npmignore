@@ -4,6 +4,7 @@ node_modules/
 .npmignore
 .travis.yml
 test/
+src-js/
 *.log
 coverage.html
 log.png

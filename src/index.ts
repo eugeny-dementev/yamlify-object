@@ -1,13 +1,14 @@
-const typeOf = require('./typeOf');
-const getConfig = require('./config');
-const getPrefix = require('./getPrefix');
+import { typeOf } from './typeOf';
+import { Config, getConfig } from './config';
+import { getPrefix } from './getPrefix';
+export { Config }
 
 /**
  * value types that not require indent after property name that include the value
  */
 const NO_INDENT_TYPES = ['object', 'array'];
 
-module.exports = function yamlifyObject (target, config) {
+export default function yamlifyObject (target: object|any[], config: Config) {
   const {
     colors,
     prefix,
@@ -21,12 +22,8 @@ module.exports = function yamlifyObject (target, config) {
 
   /**
    * Object to yaml string formatter
-   *
-   * @param {Object} obj
-   * @param {number} [indentLength=1]
-   * @returns {string}
    */
-  function objectProperty (obj, indentLength = 1, inArray = 0) {
+  function objectProperty (obj: object, indentLength: number = 1, inArray: number = 0): string {
     if (Object.keys(obj).length === 0) {
       return ` ${colors.base('{}')}`;
     }
@@ -63,12 +60,8 @@ module.exports = function yamlifyObject (target, config) {
 
   /**
    * Array to yaml string formatter
-   *
-   * @param {Array} values
-   * @param {number} [indentLength=1]
-   * @return {string}
    */
-  function arrayProperty (values, indentLength = 1, inArray = 0) {
+  function arrayProperty (values: any[], indentLength: number = 1, inArray: number = 0): string {
     if (values.length === 0) {
       return ` ${colors.base('[]')}`;
     }
@@ -100,7 +93,7 @@ module.exports = function yamlifyObject (target, config) {
     return str.substring(0, str.length - 1);
   }
 
-  function typifiedString (type, value, indentLength, inArray) {
+  function typifiedString (type: string, value, indentLength: number, inArray: number): string {
     switch (type) {
       case 'array':
         return arrayProperty(value, indentLength, inArray);
@@ -139,14 +132,14 @@ module.exports = function yamlifyObject (target, config) {
       return true;
     }
 
-    seen.set(value);
+    seen.set(value, true);
 
     return false;
   }
 
   let string = '';
 
-  seen.set(target);
+  seen.set(target, true);
 
   if (
     typeOf(target) === 'object'
@@ -155,9 +148,9 @@ module.exports = function yamlifyObject (target, config) {
     string = objectProperty(target);
   } else if (
     typeOf(target) === 'array'
-    && target.length > 0
+    && (target as any[]).length > 0
   ) {
-    string = arrayProperty(target);
+    string = arrayProperty(target as any[]);
   }
 
   if (string.length === 0) {

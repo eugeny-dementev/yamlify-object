@@ -1,4 +1,4 @@
-module.exports = function typeOf (value) {
+export function typeOf (value): string {
   if (Array.isArray(value)) {
     return 'array';
   }
