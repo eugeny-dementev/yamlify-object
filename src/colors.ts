@@ -10,6 +10,7 @@ export type Colors = {
   string?(string): string,
   number?(string): string,
   boolean?(string): string,
+  regexp?(string): string,
   null?(string): string,
   undefined?(string): string,
 }
@@ -22,6 +23,7 @@ export const colors: Colors = {
   string: noColor,
   number: noColor,
   boolean: noColor,
+  regexp: noColor,
   null: noColor,
   undefined: noColor,
 }

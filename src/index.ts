@@ -115,6 +115,8 @@ export default function yamlifyObject (target: object|any[], config: Config) {
         return colors.date(dateToString(value));
       case 'error':
         return colors.error(errorToString(value, getPrefix(indentLength, indentChars)));
+      case 'regexp':
+        return colors.regexp(value.toString());
       default:
         if (value && value.toString) {
           return value.toString();

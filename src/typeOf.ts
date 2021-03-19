@@ -11,6 +11,10 @@ export function typeOf (value): string {
     return 'error';
   }
 
+  if (value instanceof RegExp) {
+    return 'regexp';
+  }
+
   if (value === null) {
     return 'null';
   }

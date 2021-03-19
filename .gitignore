@@ -4,6 +4,7 @@ node_modules
 *.log
 coverage.json
 coverage.html
+coverage
 dist
 src-js
 test.js
