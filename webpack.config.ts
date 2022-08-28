@@ -21,6 +21,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'yamlifyObject',
     libraryTarget: 'umd',
+    globalObject: 'this',
     clean: true,
   },
 };
