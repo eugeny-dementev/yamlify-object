@@ -24,4 +24,4 @@ export function getConfig (config: Config = {}): Config {
   return Object.assign({}, defaultConfig, config, {
     colors: Object.assign({}, colors, config.colors),
   });
-};
+}

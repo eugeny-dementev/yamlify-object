@@ -1,14 +1,14 @@
 import { typeOf } from './typeOf';
 import { Config, getConfig } from './config';
 import { getPrefix } from './getPrefix';
-export { Config }
+export { Config };
 
 /**
  * value types that not require indent after property name that include the value
  */
 const NO_INDENT_TYPES = ['object', 'array'];
 
-export default function yamlifyObject (target: object|any[], config: Config) {
+export default function yamlifyObject (target: object|any[], config?: Config) {
   const {
     colors,
     prefix,
@@ -23,7 +23,7 @@ export default function yamlifyObject (target: object|any[], config: Config) {
   /**
    * Object to yaml string formatter
    */
-  function objectProperty (obj: object, indentLength: number = 1, inArray: number = 0): string {
+  function objectProperty (obj: object, indentLength = 1, inArray = 0): string {
     if (Object.keys(obj).length === 0) {
       return ` ${colors.base('{}')}`;
     }
@@ -61,7 +61,7 @@ export default function yamlifyObject (target: object|any[], config: Config) {
   /**
    * Array to yaml string formatter
    */
-  function arrayProperty (values: any[], indentLength: number = 1, inArray: number = 0): string {
+  function arrayProperty (values: any[], indentLength = 1, inArray = 0): string {
     if (values.length === 0) {
       return ` ${colors.base('[]')}`;
     }

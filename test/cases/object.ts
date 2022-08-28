@@ -100,11 +100,11 @@ export const cases = [
   },
 ];
 
-const circularObject = {};
+const circularObject: { circular?: {} } = {};
 circularObject.circular = circularObject;
 
 cases.push({
   name: 'object with circular reference',
-  input: circularObject,
+  input: circularObject as {},
   output: '\n circular: [Circular]',
 });

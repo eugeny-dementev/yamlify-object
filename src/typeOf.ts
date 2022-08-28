@@ -27,4 +27,4 @@ export function typeOf (value): string {
   }
 
   return typeof value;
-};
+}
