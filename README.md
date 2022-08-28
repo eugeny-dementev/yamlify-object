@@ -13,8 +13,8 @@ npm install yamlify-object
 
 ## Usage
 
-``` js
-const yamlifyObject = require('yamlify-object');
+```ts
+import yamlifyObject from 'yamlify-object';
 
 const obj = {
   array: [
