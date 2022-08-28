@@ -1,4 +1,4 @@
-module.exports = function typeOf (value) {
+export function typeOf (value): string {
   if (Array.isArray(value)) {
     return 'array';
   }
@@ -9,6 +9,10 @@ module.exports = function typeOf (value) {
 
   if (value instanceof Error) {
     return 'error';
+  }
+
+  if (value instanceof RegExp) {
+    return 'regexp';
   }
 
   if (value === null) {
@@ -23,4 +27,4 @@ module.exports = function typeOf (value) {
   }
 
   return typeof value;
-};
+}

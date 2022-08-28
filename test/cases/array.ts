@@ -2,7 +2,7 @@ const ERROR = new Error('hello world');
 const SYMBOL = Symbol('HELLO WORLD');
 const DATE = new Date(0);
 
-module.exports = [
+export const cases = [
   {
     name: 'empty array',
     input: [],
@@ -113,12 +113,17 @@ module.exports = [
     input: [{ o: { p: [{ o: { p: 'value' } }] } }],
     output: '\n - o:\n    p:\n     - o:\n        p: value',
   },
+  {
+    name: 'array with regexp',
+    input: [ /hello/ ],
+    output: '\n - /hello/',
+  },
 ];
 
 const circularArray = [];
 circularArray.push(circularArray);
 
-module.exports.push({
+cases.push({
   name: 'array with circular reference',
   input: circularArray,
   output: '\n - [Circular]',

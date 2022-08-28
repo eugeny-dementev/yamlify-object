@@ -2,7 +2,7 @@ const ERROR = new Error('hello world');
 const SYMBOL = Symbol('HELLO WORLD');
 const DATE = new Date(0)
 
-module.exports = [
+export const cases = [
   {
     name: 'null',
     input: null,
@@ -93,13 +93,18 @@ module.exports = [
     input: { array: [{ prop1: 'value', prop2: 'value' }] },
     output: '\n array:\n  - prop1: value\n    prop2: value',
   },
+  {
+    name: 'object with regexp',
+    input: { regexp: /hello/ },
+    output: '\n regexp: /hello/',
+  },
 ];
 
-const circularObject = {};
+const circularObject: { circular?: {} } = {};
 circularObject.circular = circularObject;
 
-module.exports.push({
+cases.push({
   name: 'object with circular reference',
-  input: circularObject,
+  input: circularObject as {},
   output: '\n circular: [Circular]',
 });

@@ -1,12 +1,15 @@
 module.exports = {
   extends: [
-    'airbnb-base',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   env: {
     node: true,
     es6: true,
   },
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'class-methods-use-this': 'off',
     'newline-per-chained-call': ["error", { ignoreChainWithDepth: 1 }],
     'indent': ['error', 2, {
@@ -24,6 +27,7 @@ module.exports = {
         body: 1
       }
     }],
+    '@typescript-eslint/no-extra-semi': 'off',
     'space-before-function-paren': ['error', 'always'],
     'no-use-before-define': ['error', { functions: false }],
     'func-names': 'error',
