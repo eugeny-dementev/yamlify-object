@@ -19,8 +19,11 @@ module.exports = {
   output: {
     filename: 'yamlify-object.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'yamlifyObject',
-    libraryTarget: 'umd',
+    library: {
+      name:'yamlifyObject',
+      type: 'umd',
+      export: 'default',
+    },
     globalObject: 'this',
     clean: true,
   },
