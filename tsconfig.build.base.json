@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "moduleResolution": "NodeNext",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowJs": false
+  },
+  "include": ["src/**/*"]
+}

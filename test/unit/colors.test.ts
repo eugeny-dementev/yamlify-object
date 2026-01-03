@@ -1,4 +1,4 @@
-import { colors } from '../../src/colors';
+import { colors } from '../../src/colors.js';
 
 const STR = 'string';
 
@@ -11,3 +11,4 @@ describe('Default colors', () => {
       });
     });
 });
+

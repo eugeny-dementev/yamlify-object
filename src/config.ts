@@ -1,6 +1,6 @@
-import { errorToString } from './errorToString';
-import { dateToString } from './dateToString';
-import { colors, Colors } from './colors';
+import { errorToString } from './errorToString.js';
+import { dateToString } from './dateToString.js';
+import { colors, Colors } from './colors.js';
 
 export type Config = {
   indent?: string,

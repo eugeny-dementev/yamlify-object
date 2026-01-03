@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.build.base.json",
+  "compilerOptions": {
+    "module": "ES2020",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist/types",
+    "outDir": "./dist/types"
+  }
+}

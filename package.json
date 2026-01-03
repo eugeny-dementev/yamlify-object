@@ -1,9 +1,17 @@
 {
   "name": "yamlify-object",
-  "version": "2.0.0",
+  "version": "3.0.0-beta",
   "description": "Stringify object/array with yaml syntax",
-  "main": "./dist/yamlify-object.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "engines": {
     "node": ">=4.0.0"
   },
@@ -21,8 +29,13 @@
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "build": "webpack",
-    "prepublish": "npm run lint && npm test && webpack",
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:packages",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:umd": "webpack",
+    "build:packages": "node scripts/write-subpackage-json.cjs",
+    "prepublish": "npm run lint && npm test && npm run build",
     "lint": "eslint ./src",
     "lint-fix": "eslint ./src --fix",
     "test": "jest test"

@@ -1,6 +1,6 @@
-import { typeOf } from '../../src/typeOf';
+import { typeOf } from '../../src/typeOf.js';
 
-import { cases } from '../cases/types';
+import { cases } from '../cases/types.js';
 
 describe('typeOf', () => {
   cases.forEach((testCase) => {
@@ -9,4 +9,5 @@ describe('typeOf', () => {
     });
   });
 });
+
 

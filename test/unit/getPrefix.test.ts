@@ -1,4 +1,4 @@
-import { getPrefix } from '../../src/getPrefix';
+import { getPrefix } from '../../src/getPrefix.js';
 
 const INDENTATIONS = ['\t', ' ', '  ', '#'];
 const DEFAULT_INDENT_CHARS = '  ';
@@ -25,3 +25,4 @@ describe('getPrefix', () => {
     expect(prefix).toBe(DEFAULT_INDENT_CHARS);
   });
 });
+

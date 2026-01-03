@@ -1,7 +1,7 @@
-import { getConfig } from '../../src/config';
-import { dateToString } from '../../src/dateToString';
-import { errorToString } from '../../src/errorToString';
-import { colors } from '../../src/colors';
+import { getConfig } from '../../src/config.js';
+import { dateToString } from '../../src/dateToString.js';
+import { errorToString } from '../../src/errorToString.js';
+import { colors } from '../../src/colors.js';
 
 const defaultConfig = {
   indent: ' ',
@@ -58,4 +58,5 @@ describe('config', () => {
       });
     });
 });
+
 

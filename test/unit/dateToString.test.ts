@@ -1,4 +1,4 @@
-import { dateToString } from '../../src/dateToString';
+import { dateToString } from '../../src/dateToString.js';
 
 describe('Date instance formatting', () => {
   test('dateToString default is date.toString', () => {
@@ -11,3 +11,4 @@ describe('Date instance formatting', () => {
     expect(expected).toBe(dateToString(date));
   });
 });
+

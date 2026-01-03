@@ -1,6 +1,6 @@
-import { typeOf } from './typeOf';
-import { Config, getConfig } from './config';
-import { getPrefix } from './getPrefix';
+import { typeOf } from './typeOf.js';
+import { Config, getConfig } from './config.js';
+import { getPrefix } from './getPrefix.js';
 export { Config };
 
 /**

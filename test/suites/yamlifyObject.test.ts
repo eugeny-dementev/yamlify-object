@@ -1,7 +1,7 @@
-import yamlifyObject from '../../src/index';
+import yamlifyObject from '../../src/index.js';
 
-import { cases as objectTestCases } from '../cases/object';
-import { cases as arrayTestCases } from '../cases/array';
+import { cases as objectTestCases } from '../cases/object.js';
+import { cases as arrayTestCases } from '../cases/array.js';
 
 describe('yamlifyObject', () => {
   describe('defaultConfig', () => {
@@ -26,3 +26,4 @@ describe('yamlifyObject', () => {
     });
   });
 });
+

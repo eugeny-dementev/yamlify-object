@@ -14,7 +14,10 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts'],
+    extensions: ['.ts', '.js'],
+    extensionAlias: {
+      '.js': ['.ts', '.js'],
+    },
   },
   output: {
     filename: 'yamlify-object.js',
@@ -25,6 +28,6 @@ module.exports = {
       export: 'default',
     },
     globalObject: 'this',
-    clean: true,
+    clean: false,
   },
 };
