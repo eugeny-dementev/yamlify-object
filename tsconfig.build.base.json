@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "rootDir": "./src",
     "sourceMap": true,
     "esModuleInterop": true,
-    "allowJs": false
+    "allowJs": false,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

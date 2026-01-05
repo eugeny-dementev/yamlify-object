@@ -5,7 +5,7 @@
     "declaration": true,
     "outDir": "./dist",
     "sourceMap": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "allowJs": false
   },

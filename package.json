@@ -1,6 +1,6 @@
 {
   "name": "yamlify-object",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Stringify object/array with yaml syntax",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -21,17 +21,18 @@
     "node": ">=4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",
-    "@typescript-eslint/eslint-plugin": "^5.35.1",
-    "@typescript-eslint/parser": "^5.35.1",
-    "eslint": "^8.23.0",
-    "jest": "^28.0.0",
-    "ts-jest": "^28.0.8",
-    "ts-loader": "^9.3.1",
-    "ts-node": "^10.9.1",
-    "typescript": "4.7.4",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@types/jest": "^30.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "eslint": "^9.39.2",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
   },
   "scripts": {
     "build": "npm run build:types && npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:packages",
@@ -40,7 +41,7 @@
     "build:types": "tsc -p tsconfig.types.json && node scripts/write-types-extensions.cjs",
     "build:umd": "webpack",
     "build:packages": "node scripts/write-subpackage-json.cjs",
-    "prepublish": "npm run lint && npm test && npm run build",
+    "prepublish": "npm run lint && npm test && npm run build && attw --pack .",
     "lint": "eslint ./src",
     "lint-fix": "eslint ./src --fix",
     "test": "jest test"
