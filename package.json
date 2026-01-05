@@ -1,15 +1,20 @@
 {
   "name": "yamlify-object",
-  "version": "3.0.0-beta",
+  "version": "3.0.0",
   "description": "Stringify object/array with yaml syntax",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": {
+        "types": "./dist/types/index.d.mts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/cjs/index.js"
+      }
     }
   },
   "engines": {
@@ -32,7 +37,7 @@
     "build": "npm run build:types && npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:packages",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:types": "tsc -p tsconfig.types.json",
+    "build:types": "tsc -p tsconfig.types.json && node scripts/write-types-extensions.cjs",
     "build:umd": "webpack",
     "build:packages": "node scripts/write-subpackage-json.cjs",
     "prepublish": "npm run lint && npm test && npm run build",
